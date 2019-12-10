@@ -1,0 +1,26 @@
+<%- include('./partials/header') %>
+
+<h1><%= title %></h1>
+<% if(hobbies.length) { %>
+  <ul>
+    <% hobbies.forEach(hobby => { %>
+        <li>
+          <%= hobby.name %> - <a href="/hobbies/<%=hobby._id%>">view details</a>
+          <form class="delete-button" action="/hobbies/<%= hobby._id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+          </form> 
+        </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <h4>No Hobbies Here!</h4>
+<% } %>
+<p>-----------------------</p>
+<h2>Add New Hobby!</h2>
+<form class="create-hobby" action="/hobbies" method="POST">
+  <input type="text"  name="name" required placeholder="hobby name">
+  <textarea name="description" placeholder="hobby description"></textarea>
+  <input type="submit" value="Submit Hobby">
+</form> 
+
+<%- include('./partials/footer') %>

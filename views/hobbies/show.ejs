@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+<a href="/">Back to Homepage</a>
+<h1><%= title %></h1>
+<ul>
+   <li>
+      Hobby Name: <span style="font-weight: bold"><%=hobby.name%></span>
+   </li>
+   <li>
+      Hobby Description: <span style="font-style: italic"><%=hobby.description%></span>
+   </li>
+</ul>
+
+<h2>Update Hobby Below!</h2>
+<form class="" action="/hobbies/<%=hobby._id%>?_method=PUT" method="POST">
+  <input type="text"  name="name" required placeholder="<%=hobby.name%>" value="<%=hobby.name%>">
+  <textarea name="description" placeholder="<%=hobby.description%>"><%=hobby.description%></textarea>
+  <input type="submit" value="Update Hobby">
+</form> 
+
+<p>-----------------------</p>
+<h2>Delete Hobby?</h2>
+<form class="delete-button" action="/hobbies/<%= hobby._id %>?_method=DELETE" method="POST">
+   <button type="submit">Delete <%=hobby.name%></button>
+</form> 
+
+<%- include('../partials/footer') %>
